@@ -1,46 +1,100 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './mealplan.scss';
 
-const Mealplan = ({ stats }) => {
+const Mealplan = ({ bmr, stats }) => {
+  const maintainence = Math.round(bmr * stats.activity);
+  const sedentary = Math.round(bmr * 1.2);
+  const light = Math.round(bmr * 1.375);
+  const moderate = Math.round(bmr * 1.55);
+  const heavy = Math.round(bmr * 1.725);
+  const athlete = Math.round(bmr * 1.9);
+  const meal = Math.round(maintainence / 3);
+
+  const protein = stats.weight;
+  const [goal, setGoal] = useState(null);
+  const [carbs, setCarbs] = useState(0);
+  const [fats, setFats] = useState(0);
+
+  const maintain = () => {
+    setGoal('maintain');
+    setFats(Math.round(stats.weight * 0.4));
+    setCarbs(
+      Math.round((maintainence - (protein * 4 + stats.weight * 0.4 * 9)) / 4)
+    );
+  };
+
+  const bulk = () => {
+    setGoal('bulk');
+    setFats(Math.round(stats.weight * 0.45));
+    setCarbs(
+      Math.round(
+        (maintainence + 300 - (protein * 4 + stats.weight * 0.45 * 9)) / 4
+      )
+    );
+  };
+
+  const cut = () => {
+    setGoal('cut');
+    setFats(Math.round(stats.weight * 0.35));
+    setCarbs(
+      Math.round(
+        (maintainence - 300 - (protein * 4 + stats.weight * 0.35 * 9)) / 4
+      )
+    );
+  };
+
   return (
     <div className="mealplan">
       <div className="topwrapper">
         <div className="caloriesnumber">
           <h1>Your Maintenance Calories</h1>
-          <h2>3030</h2>
+          <h2>{maintainence}</h2>
           <p>calories per day</p>
-          <h2>640</h2>
-          <p>calories per meal</p>
+          <h2>{meal}</h2>
+          <p>calories per meal (3 meals/day)</p>
         </div>
         <div className="info">
           <p>
-            Using the Katch-McArdle Formula, your maintainence calories are 3030
+            Using the Katch-McArdle Formula, your maintainence calories are
+            <strong> {maintainence} </strong>
             calories per day. The table below shows the daily caloric intake
             calculations for different activity levels.
           </p>
           <div className="basal">
             <p>Basal Metabolic Rate</p>
-            <p>1000 calories per day</p>
+            <p>
+              <strong>{bmr}</strong> calories per day
+            </p>
           </div>
           <div className="sedentary">
             <p>Sedentary</p>
-            <p>1000 calories per day</p>
+            <p>
+              <strong>{sedentary}</strong> calories per day
+            </p>
           </div>
           <div className="light">
             <p>Light Exercise</p>
-            <p>1000 calories per day</p>
+            <p>
+              <strong>{light}</strong> calories per day
+            </p>
           </div>
           <div className="moderate">
             <p>Moderate Exercise</p>
-            <p>1000 calories per day</p>
+            <p>
+              <strong>{moderate}</strong> calories per day
+            </p>
           </div>
           <div className="heavy">
             <p>Heavy Exercise</p>
-            <p>1000 calories per day</p>
+            <p>
+              <strong>{heavy}</strong> calories per day
+            </p>
           </div>
           <div className="athlete">
             <p>Athlete</p>
-            <p>1000 calories per day</p>
+            <p>
+              <strong>{athlete}</strong> calories per day
+            </p>
           </div>
         </div>
       </div>
@@ -50,26 +104,43 @@ const Mealplan = ({ stats }) => {
           weight
         </h1>
         <div className="choices">
-          <button className="maintain">Maintain</button>
-          <button className="bulk">Bulk</button>
-          <button className="cut">Cut</button>
+          <button className="maintain" onClick={maintain}>
+            Maintain
+          </button>
+          <button className="bulk" onClick={bulk}>
+            Bulk
+          </button>
+          <button className="cut" onClick={cut}>
+            Cut
+          </button>
         </div>
+        <p className="totalcals">
+          {goal
+            ? `Since your goal is to ${goal}, your recommended daily caloric intake is going to be ${
+                goal === 'maintain'
+                  ? maintainence
+                  : goal === 'bulk'
+                  ? maintainence + 300
+                  : maintainence - 300
+              }`
+            : 'Please select a goal'}
+        </p>
         <h2>
           These numbers reflect the most optimal amount of macronutrients to
-          consume for your goal
+          consume for your goal weight.
         </h2>
         <div className="macros">
           <div className="proteins">
             <p>Proteins:</p>
-            <p>100g</p>
+            <p>{protein}g</p>
           </div>
           <div className="carbs">
             <p>Carbs:</p>
-            <p>100g</p>
+            <p>{carbs}g</p>
           </div>
           <div className="fats">
             <p>Fats:</p>
-            <p>100g</p>
+            <p>{fats}g</p>
           </div>
         </div>
       </div>
