@@ -1,0 +1,30 @@
+.foodPicker {
+  margin-top: 200px;
+  display: flex;
+  flex-direction: column;
+
+  .queries {
+    display: flex;
+    max-width: 800px;
+    justify-content: space-between;
+    align-items: center;
+
+    button {
+      width: 100px;
+      height: 35px;
+    }
+
+    div > button {
+      width: 50px; 
+    }
+
+    div > input {
+      height: 35px;
+    }
+  }
+
+  .searchresults {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+  }
+}

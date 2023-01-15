@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { HashLink } from 'react-router-hash-link';
+import FoodPicker from '../FoodPicker/FoodPicker';
 import './mealplan.scss';
 
 const Mealplan = ({ bmr, stats }) => {
@@ -44,7 +46,7 @@ const Mealplan = ({ bmr, stats }) => {
   };
 
   return (
-    <div className="mealplan">
+    <div className="mealplan" id="mealplan">
       <div className="topwrapper">
         <div className="caloriesnumber">
           <h1>Your Maintenance Calories</h1>
@@ -104,9 +106,11 @@ const Mealplan = ({ bmr, stats }) => {
           weight
         </h1>
         <div className="choices">
-          <button className="maintain" onClick={maintain}>
-            Maintain
-          </button>
+          <HashLink to="#display" smooth>
+            <button className="maintain" onClick={maintain}>
+              Maintain
+            </button>
+          </HashLink>
           <button className="bulk" onClick={bulk}>
             Bulk
           </button>
@@ -125,7 +129,7 @@ const Mealplan = ({ bmr, stats }) => {
               }`
             : 'Please select a goal'}
         </p>
-        <h2>
+        <h2 id="display">
           These numbers reflect the most optimal amount of macronutrients to
           consume for your goal weight.
         </h2>
@@ -144,6 +148,27 @@ const Mealplan = ({ bmr, stats }) => {
           </div>
         </div>
       </div>
+      <div className="setup">
+        <h3>
+          TOTAL DAILY INTAKE:{' '}
+          {`${
+            goal === 'maintain'
+              ? maintainence
+              : goal === 'bulk'
+              ? maintainence + 300
+              : maintainence - 300
+          } calories`}
+        </h3>
+        <p>
+          Now that we have your calories and macros calculated, you are reading
+          to begin building your customized meal plan tailored to fit your
+          goals. You can also choose to add complete recipes instead of adding individual foods. 
+        </p>
+        <HashLink to="#foodpicker" smooth>
+          <button>Begin Now</button>
+        </HashLink>
+      </div>
+      <FoodPicker />
     </div>
   );
 };
