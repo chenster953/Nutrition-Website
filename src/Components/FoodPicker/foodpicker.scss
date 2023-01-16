@@ -2,10 +2,13 @@
   margin-top: 200px;
   display: flex;
   flex-direction: column;
+  height: 800px;
+  align-items: center;
+  width: 800px;
 
   .queries {
     display: flex;
-    max-width: 800px;
+    width: 100%;
     justify-content: space-between;
     align-items: center;
 
@@ -23,8 +26,11 @@
     }
   }
 
-  .searchresults {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
+  .remaining {
+    display: flex;
+    max-width: 800px;
+    width: 100%;
+    justify-content: space-between;
+    margin: 20px 0;
   }
 }

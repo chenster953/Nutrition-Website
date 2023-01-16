@@ -16,6 +16,7 @@ const Mealplan = ({ bmr, stats }) => {
   const [goal, setGoal] = useState(null);
   const [carbs, setCarbs] = useState(0);
   const [fats, setFats] = useState(0);
+  const [macroTargets, setMacroTargets] = useState({});
 
   const maintain = () => {
     setGoal('maintain');
@@ -23,6 +24,14 @@ const Mealplan = ({ bmr, stats }) => {
     setCarbs(
       Math.round((maintainence - (protein * 4 + stats.weight * 0.4 * 9)) / 4)
     );
+    setMacroTargets({
+      calories: maintainence,
+      protein: protein,
+      carbs: Math.round(
+        (maintainence - (protein * 4 + stats.weight * 0.4 * 9)) / 4
+      ),
+      fats: Math.round(stats.weight * 0.4),
+    });
   };
 
   const bulk = () => {
@@ -33,6 +42,14 @@ const Mealplan = ({ bmr, stats }) => {
         (maintainence + 300 - (protein * 4 + stats.weight * 0.45 * 9)) / 4
       )
     );
+    setMacroTargets({
+      calories: maintainence + 300,
+      protein: protein,
+      carbs: Math.round(
+        (maintainence + 300 - (protein * 4 + stats.weight * 0.45 * 9)) / 4
+      ),
+      fats: Math.round(stats.weight * 0.45),
+    });
   };
 
   const cut = () => {
@@ -43,6 +60,14 @@ const Mealplan = ({ bmr, stats }) => {
         (maintainence - 300 - (protein * 4 + stats.weight * 0.35 * 9)) / 4
       )
     );
+    setMacroTargets({
+      calories: maintainence - 300,
+      protein: protein,
+      carbs: Math.round(
+        (maintainence - 300 - (protein * 4 + stats.weight * 0.35 * 9)) / 4
+      ),
+      fats: Math.round(stats.weight * 0.35),
+    });
   };
 
   return (
@@ -162,13 +187,14 @@ const Mealplan = ({ bmr, stats }) => {
         <p>
           Now that we have your calories and macros calculated, you are reading
           to begin building your customized meal plan tailored to fit your
-          goals. You can also choose to add complete recipes instead of adding individual foods. 
+          goals. You can also choose to add complete recipes instead of adding
+          individual foods.
         </p>
         <HashLink to="#foodpicker" smooth>
           <button>Begin Now</button>
         </HashLink>
       </div>
-      <FoodPicker />
+      <FoodPicker macroTargets={macroTargets}/>
     </div>
   );
 };

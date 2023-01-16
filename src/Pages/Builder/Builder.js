@@ -1,29 +1,10 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState } from 'react';
 import { BrowserRouter } from 'react-router-dom';
 import Mealplan from '../../Components/Mealplan/Mealplan';
 import './builder.scss';
 import { HashLink } from 'react-router-hash-link';
 
 const Builder = () => {
-  const ref = useRef(null);
-  useEffect(() => {
-    // disable scrolling
-    document.body.style.overflow = 'hidden';
-
-    const preventScrolling = (e) => {
-      if (!ref.current.contains(e.target)) {
-        e.preventDefault();
-      }
-    };
-    window.addEventListener('wheel', preventScrolling);
-
-    // Cleanup function
-    return () => {
-      // enable scrolling
-      document.body.style.overflow = 'auto';
-      window.removeEventListener('wheel', preventScrolling);
-    };
-  }, []);
 
   const [stats, setStats] = useState({
     gender: '',
@@ -97,7 +78,7 @@ const Builder = () => {
 
   return (
     <BrowserRouter>
-      <div className="builder" ref={ref}>
+      <div className="builder">
         <div className="questionnaire">
           <h1>Find Your Goal Daily Caloric Intake</h1>
           <p>
