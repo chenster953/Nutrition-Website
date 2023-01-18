@@ -1,20 +1,21 @@
 import React from 'react';
 import './topbar.scss';
+import { Link } from 'react-router-dom';
 
 const Topbar = () => {
   return (
     <div className="topbar">
       <div className="left">
-        <div className="logo">ℂ𝔸𝕃𝕊-ℝ-𝕌𝕊</div>
+        <div className="logo"><button>ℂ𝔸𝕃𝕊-ℝ-𝕌𝕊</button></div>
       </div>
       <div className="center">
         <nav>
           <ul>
-            <li>Home</li>
-            <li>About</li>
-            <li>Method</li>
-            <li>Builder</li>
-            <li>Recipes</li>
+            <Link className='link' to='/'><li>Home</li></Link>
+            <Link className='link' to='/about'><li>About</li></Link>
+            <Link className='link' to='/method'><li>Method</li></Link>
+            <Link className='link' to='/builder'><li>Builder</li></Link>
+            <Link className='link' to='/recipes'><li>Recipes</li></Link>
           </ul>
         </nav>
       </div>

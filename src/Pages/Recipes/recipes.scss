@@ -1,0 +1,29 @@
+.recipes {
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  width: 1180px;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+
+  .search-container {
+    margin-top: 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    background-color: red;
+    height: 300px;
+
+    h1 {
+      font-size: 50px;
+    }
+
+    input {
+      height: 50px;
+      width: 250px;
+      border-radius: 20px;
+      padding: 20px;
+      border: none;
+    }
+  }
+}

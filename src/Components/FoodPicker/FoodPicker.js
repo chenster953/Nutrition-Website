@@ -1,32 +1,43 @@
 import React, { useEffect, useState } from 'react';
 import { HashLink } from 'react-router-hash-link';
+import DisplayIngredients from '../DisplayIngredients/DisplayIngredients';
 import SingleFood from '../SingleFood/SingleFood';
 import './foodpicker.scss';
 
-const FoodPicker = ({macroTargets}) => {
+const FoodPicker = ({ macroTargets }) => {
   const [query, setQuery] = useState('');
   const [nutritionStats, setNutritionStats] = useState([{}]);
   const [viewResults, setViewResults] = useState(false);
+  const [savedIngredients, setSavedIngredients] = useState([]);
 
-  const [remainingCalories, setRemainingCalories] = useState(0)
-  const [remainingProtein, setRemainingProtein] = useState(0)
-  const [remainingCarbs, setRemainingCarbs] = useState(0)
-  const [remainingFats, setRemainingFats] = useState(0)
+  const [remainingCalories, setRemainingCalories] = useState(0);
+  const [remainingProtein, setRemainingProtein] = useState(0);
+  const [remainingCarbs, setRemainingCarbs] = useState(0);
+  const [remainingFats, setRemainingFats] = useState(0);
 
-  useEffect(()=> {
-    setRemainingCalories(macroTargets.calories)
-    setRemainingProtein(macroTargets.protein)
-    setRemainingCarbs(macroTargets.carbs)
-    setRemainingFats(macroTargets.fats)
-    console.log(macroTargets)
-  }, [macroTargets])
+  useEffect(() => {
+    setRemainingCalories(macroTargets.calories);
+    setRemainingProtein(macroTargets.protein);
+    setRemainingCarbs(macroTargets.carbs);
+    setRemainingFats(macroTargets.fats);
+  }, [macroTargets]);
 
   const handleAdd = (data) => {
-    setRemainingCalories(prevCalories => prevCalories - data.calories);
-    setRemainingProtein(prevProtein => prevProtein - data.protein);
-    setRemainingCarbs(prevCarbs => prevCarbs - data.carbs);
-    setRemainingFats(prevFats => prevFats - data.fats);
-  }
+    setRemainingCalories((prevCalories) => prevCalories - data.calories);
+    setRemainingProtein((prevProtein) => prevProtein - data.protein);
+    setRemainingCarbs((prevCarbs) => prevCarbs - data.carbs);
+    setRemainingFats((prevFats) => prevFats - data.fats);
+    setSavedIngredients((prevSavedIngredients) => [
+      ...prevSavedIngredients,
+      {
+        name: data.label,
+        calories: data.calories,
+        protein: data.protein,
+        carbs: data.carbs,
+        fats: data.fats,
+      },
+    ]);
+  };
 
   const search = async (searchTerm) => {
     const res = await fetch(
@@ -97,17 +108,58 @@ const FoodPicker = ({macroTargets}) => {
         <HashLink to="#display" smooth>
           <button className="viewmacros">View Macros</button>
         </HashLink>
-        <button className="recipes">Search Recipes</button>
+        <HashLink to="#displayingredients" smooth>
+          <button
+            className="recipes"
+            onClick={() => console.log(savedIngredients)}
+          >
+            View Ingredients
+          </button>
+        </HashLink>
       </div>
       <div className="remaining">
-        <span>Calories remaining: {remainingCalories}</span>
-        <span>Protein remaining: {remainingProtein}g</span>
-        <span>Carbs remaining: {remainingCarbs}g</span>
-        <span>Fats remaining: {remainingFats}g</span>
+        <span>
+          Calories remaining:{' '}
+          {remainingCalories <= 0 ? (
+            <strong style={{ color: 'red' }}>0</strong>
+          ) : (
+            remainingCalories
+          )}
+        </span>
+        <span>
+          Protein remaining:{' '}
+          {remainingProtein <= 0 ? (
+            <strong style={{ color: 'red' }}>0</strong>
+          ) : (
+            remainingProtein
+          )}
+          g
+        </span>
+        <span>
+          Carbs remaining:{' '}
+          {remainingCarbs <= 0 ? (
+            <strong style={{ color: 'red' }}>0</strong>
+          ) : (
+            remainingCarbs
+          )}
+          g
+        </span>
+        <span>
+          Fats remaining:{' '}
+          {remainingFats <= 0 ? (
+            <strong style={{ color: 'red' }}>0</strong>
+          ) : (
+            remainingFats
+          )}
+          g
+        </span>
       </div>
       <div className="searchresults">
-        {viewResults && <SingleFood stats={nutritionStats} handleAdd={handleAdd}/>}
+        {viewResults && (
+          <SingleFood stats={nutritionStats} handleAdd={handleAdd} />
+        )}
       </div>
+      <DisplayIngredients ingredients={savedIngredients} />
     </div>
   );
 };
