@@ -1,6 +1,7 @@
 import { Routes, Route } from 'react-router-dom';
 import Builder from './Pages/Builder/Builder';
 import Home from './Pages/Home/Home';
+import NewBlogPost from './Pages/NewBlogPost/NewBlogPost';
 import Recipes from './Pages/Recipes/Recipes';
 
 function App() {
@@ -11,6 +12,7 @@ function App() {
       <Route path='/method' element={<Home />}/>
       <Route path='/builder' element={<Builder />}/>
       <Route path='/recipes' element={<Recipes />}/>
+      <Route path='/newblogpost' element={<NewBlogPost />}/>
     </Routes>
   );
 }

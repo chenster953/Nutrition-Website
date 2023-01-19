@@ -1,11 +1,15 @@
 const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
-const cors = require('cors');
 const blogModel = require('./models/Blog');
+const cors = require('cors');
+require('dotenv').config();
+
+app.use(express.json());
+app.use(cors());
 
 mongoose.connect(
-  'mongodb+srv://theapidemon:banana71699@nutrition-app-api.8sytfrh.mongodb.net/?retryWrites=true&w=majority'
+  `mongodb+srv://theapidemon:${process.env.REACT_APP_MONGODB_PW}@nutrition-app-api.8sytfrh.mongodb.net/test?retryWrites=true&w=majority`
 );
 
 app.get('/getBlogs', (req, res) => {
@@ -16,6 +20,13 @@ app.get('/getBlogs', (req, res) => {
       res.json(result);
     }
   });
+});
+
+app.post('/postBlogs', async (req, res) => {
+  const blog = req.body;
+  const newBlog = new blogModel(blog);
+  await newBlog.save();
+  res.json(blog);
 });
 
 app.listen(3001, () => {

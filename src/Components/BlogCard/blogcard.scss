@@ -1,0 +1,34 @@
+.blogcard {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  background-color: cornflowerblue;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-evenly;
+  height: 350px;
+  padding: 20px;
+  border-radius: 20px;
+  box-shadow: 2px 4px 8px rgba(0,0,0,.8);
+
+  h1 {
+    font-size: 30px;
+  }
+
+  button {
+    background-color: rgb(180, 31, 31);
+    color: white;
+    font-size: 18px;
+    font-weight: 600;
+    width: 150px;
+    height: 40px;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: 0.4s;
+  }
+
+  button:hover {
+    background-color: black;
+    color: yellow;
+    scale: 1.1;
+  }
+}
