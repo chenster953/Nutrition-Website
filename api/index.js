@@ -22,6 +22,16 @@ app.get('/getBlogs', (req, res) => {
   });
 });
 
+app.get('/blogs/:id', (req, res) => {
+  blogModel.find({_id: `${req.params.id}`}, (err, result) => {
+    if (err) {
+      res.json(err);
+    } else {
+      res.json(result);
+    }
+  });
+});
+
 app.post('/postBlogs', async (req, res) => {
   const blog = req.body;
   const newBlog = new blogModel(blog);

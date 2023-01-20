@@ -20,6 +20,7 @@
     background-color: darkgrey;
     border-radius: 20px;
     margin-bottom: 100px;
+    box-shadow: 2px 4px 8px rgba(0,0,0,.8);
 
     h1 {
       font-size: 50px;
@@ -37,8 +38,14 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+
+    .results-container {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+      gap: 20px;
+    }
     
-    .resultsheader {
+    .blogheader {
       display: flex;
       align-items: center;
       width: 100%;

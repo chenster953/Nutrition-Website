@@ -3,23 +3,21 @@ const mongoose = require('mongoose');
 const BlogSchema = new mongoose.Schema({
   title: {
     type: String,
-    required: true,
-  },
-  date: {
-    type: String,
-    required: true,
   },
   author: {
     type: String,
-    required: true,
   },
   description: {
     type: String,
-    required: true
+  },
+  date: {
+    type: String
   },
   body: {
     type: String,
-    required: true,
+  },
+  approved: {
+    type: Boolean,
   },
 });
 

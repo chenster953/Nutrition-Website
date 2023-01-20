@@ -9,7 +9,7 @@ const BlogCard = (props) => {
       <p>{props.blog.author}</p>
       <p>{props.blog.date}</p>
       <p>{props.blog.description}</p>
-      <Link to="/">
+      <Link to={`/blogs/${props.blog._id}`}>
         <button>Read More ➤</button>
       </Link>
     </div>
