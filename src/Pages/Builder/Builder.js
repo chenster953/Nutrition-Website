@@ -3,6 +3,7 @@ import Mealplan from '../../Components/Mealplan/Mealplan';
 import './builder.scss';
 import { HashLink } from 'react-router-hash-link';
 import Topbar from '../../Components/Topbar/Topbar';
+import Footer from '../../Components/Footer/Footer';
 
 const Builder = () => {
   const [stats, setStats] = useState({
@@ -197,6 +198,7 @@ const Builder = () => {
         </HashLink>
       </div>
       <Mealplan bmr={bmr} stats={stats} />
+      <Footer />
     </div>
   );
 };

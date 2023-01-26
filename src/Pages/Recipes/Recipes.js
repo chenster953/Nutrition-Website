@@ -5,6 +5,7 @@ import axios from 'axios';
 import BlogCard from '../../Components/BlogCard/BlogCard';
 import { Link } from 'react-router-dom';
 import RecipeCard from '../../Components/RecipeCard/RecipeCard';
+import Footer from '../../Components/Footer/Footer';
 
 const Recipes = () => {
   const [blogs, setBlogs] = useState([]);
@@ -78,6 +79,7 @@ const Recipes = () => {
             </div>
           </div>
         </div>
+        <Footer />
       </div>
     </div>
   );
