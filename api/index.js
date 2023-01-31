@@ -8,6 +8,8 @@ require('dotenv').config();
 app.use(express.json());
 app.use(cors());
 
+mongoose.set('strictQuery', false)
+
 mongoose.connect(
   `mongodb+srv://theapidemon:${process.env.REACT_APP_MONGODB_PW}@nutrition-app-api.8sytfrh.mongodb.net/test?retryWrites=true&w=majority`
 );
