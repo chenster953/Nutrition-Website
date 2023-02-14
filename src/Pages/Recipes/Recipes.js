@@ -59,7 +59,7 @@ const Recipes = () => {
           </div>
           <div className="blog">
             <div className="blogheader">
-              <h2>Get Inspired</h2>
+              <h2>Featured Blogs</h2>
               <Link to="/newBlogPost">
                 <button>Create Blog Post</button>
               </Link>
