@@ -16,8 +16,8 @@ const Footer = () => {
           </ul>
         </nav>
         <div className="contact">
-          <p>James Chen</p>
-          <p>zhaojun.chen0716@gmail.com</p>
+          <p>Lake Tahoe</p>
+          <p>lakeTahoe@gmail.com</p>
           <div className="socials">
             <i className="fa-brands fa-square-instagram"></i>
             <i className="fa-brands fa-square-facebook"></i>

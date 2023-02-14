@@ -7,6 +7,7 @@
   margin: 0 auto;
   background-position: 0rem -35rem;
   position: relative;
+  background-image: linear-gradient(to top, #3f51b1 0%, #5a55ae 13%, #7b5fac 25%, #8f6aae 38%, #a86aa4 50%, #cc6b8e 62%, #f18271 75%, #f3a469 87%, #f7c978 100%);
 
   .background {
     background: url('../../images/healthyfood.jpeg');
@@ -41,7 +42,7 @@
   }
 
  .hero {
-  margin-top: -190px;
+  margin-top: -200px;
   max-width: 100%;
   width: 100%;
   display: flex;
