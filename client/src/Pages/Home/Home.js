@@ -2,6 +2,7 @@ import React from 'react';
 import Footer from '../../Components/Footer/Footer';
 import Topbar from '../../Components/Topbar/Topbar';
 import './home.scss';
+import { Link } from 'react-router-dom';
 
 const Home = () => {
   return (
@@ -14,9 +15,9 @@ const Home = () => {
       <div className="hero">
         <h1>WE BELIEVE CONSISTENCY IS KING</h1>
         <p>Designing healthy and balanced meals that YOU enjoy is the key to maintaining a consistent, healthy relationship with food.</p>
-        <button className="calltoaction">
+        <Link to={'/builder'}><button className="calltoaction">
           START NOW ➤
-        </button>
+        </button></Link>
       </div>
       <Footer />
     </div>
