@@ -5,12 +5,11 @@
   width: 100%;
   flex-direction: column;
   margin: 0 auto;
-  background-position: 0rem -35rem;
   position: relative;
-  background-image: linear-gradient(to top, #3f51b1 0%, #5a55ae 13%, #7b5fac 25%, #8f6aae 38%, #a86aa4 50%, #cc6b8e 62%, #f18271 75%, #f3a469 87%, #f7c978 100%);
 
   .background {
-    background: url('../../images/healthyfood.jpeg');
+    background: url('../../images/healthyfood.jpg');
+    background-position-y: center;
     background-repeat: no-repeat;
     background-size: cover;
     width: 100%;
@@ -30,13 +29,7 @@
 
     h2 {
       font-size: 120px;
-      color: rgb(125, 125, 221);
-      text-shadow: 2px 4px 2px rgba(0,0,0,.8);
-    }
-
-    p {
-      font-size: 40px;
-      color: rgb(125, 125, 221);
+      color:rgb(65, 65, 135);
       text-shadow: 2px 4px 2px rgba(0,0,0,.8);
     }
   }

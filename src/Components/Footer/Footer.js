@@ -5,26 +5,39 @@ const Footer = () => {
   return (
     <div className="footer">
       <div className="topfooter">
-        <div className="logo">ℂ𝔸𝕃𝕊-ℝ-𝕌𝕊</div>
+        <div className="contact">
+        <div className="logo">ApexNutrition</div>
+        </div>
         <nav>
           <ul>
-            <li>Home</li>
-            <li>About</li>
-            <li>Method</li>
-            <li>Builder</li>
-            <li>Recipes</li>
+            <h3>Shop</h3>
+            <li>Vitamins and Minerals</li>
+            <li>Protein Supplements</li>
+            <li>Pre-Workout</li>
+            <li>Electrolytes</li>
+            <li>Meal Replacement shakes</li>
           </ul>
         </nav>
-        <div className="contact">
-          <p>Lake Tahoe</p>
-          <p>lakeTahoe@gmail.com</p>
-          <div className="socials">
-            <i className="fa-brands fa-square-instagram"></i>
-            <i className="fa-brands fa-square-facebook"></i>
-            <i className="fa-brands fa-square-twitter"></i>
-            <i className="fa-brands fa-youtube"></i>
-          </div>
-        </div>
+        <nav>
+          <ul>
+            <h3>Templates</h3>
+            <li>Weight Loss Nutrition Plan</li>
+            <li>Exercise Plan</li>
+            <li>Calorie Tracker</li>
+            <li>Step Counters & Logger</li>
+            <li>Anabolic Cookbook</li>
+          </ul>
+        </nav>
+        <nav>
+          <ul>
+            <h3>Company</h3>
+            <li>About ApexNutrition</li>
+            <li>News</li>
+            <li>Read our Blogs</li>
+            <li>Terms of Service</li>
+            <li>Private Policy</li>
+          </ul>
+        </nav>
       </div>
       <div class="waves">
         <div className="wave" id="wave1"></div>

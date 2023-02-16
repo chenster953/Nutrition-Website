@@ -5,7 +5,6 @@ const DisplayIngredients = (props) => {
   return (
     <div className="displayingredients">
       <h1 id='displayingredients'>Saved Ingredients: </h1>
-      {console.log(props.ingredients)}
       {props.ingredients.map((ingredient) => (
         <div className="ingredients">
           <h2>{ingredient.name}</h2>
@@ -15,6 +14,7 @@ const DisplayIngredients = (props) => {
           <p>Fats: {ingredient.fats}</p>
         </div>
       ))}
+      <button className='clear' onClick={props.clear}>Clear all</button>
     </div>
   );
 };

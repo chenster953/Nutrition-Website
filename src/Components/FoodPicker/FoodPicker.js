@@ -39,6 +39,10 @@ const FoodPicker = ({ macroTargets }) => {
     ]);
   };
 
+  const clear = () => {
+    setSavedIngredients([]);
+  }
+
   const search = async (searchTerm) => {
     const res = await fetch(
       `https://api.edamam.com/api/food-database/v2/parser?app_id=${process.env.REACT_APP_ID}&app_key=${process.env.REACT_APP_KEY}&ingr=${searchTerm}&nutrition-type=cooking&calories=300&nutrients%5BCHOCDF%5D=0%2B&nutrients%5BFAT%5D=0%2B&nutrients%5BPROCNT%5D=0%2B`
@@ -159,7 +163,7 @@ const FoodPicker = ({ macroTargets }) => {
           <SingleFood stats={nutritionStats} handleAdd={handleAdd} />
         )}
       </div>
-      <DisplayIngredients ingredients={savedIngredients} />
+      <DisplayIngredients ingredients={savedIngredients} clear={clear}/>
     </div>
   );
 };

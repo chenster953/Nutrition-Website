@@ -181,7 +181,9 @@ const Mealplan = ({ bmr, stats }) => {
               ? maintainence
               : goal === 'bulk'
               ? maintainence + 300
-              : maintainence - 300
+              : goal === 'cut'
+              ? maintainence - 300:
+              '0'
           } calories`}
         </h3>
         <p>

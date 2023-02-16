@@ -9,8 +9,7 @@ const Home = () => {
       <div className="background"></div>
       <Topbar />
       <div className="bigtitle">
-        <h2>ℂ𝔸𝕃𝕊-ℝ-𝕌𝕊</h2>
-        <p>A Personalized Approach</p>
+        <h2>ApexNutrition</h2>
       </div>
       <div className="hero">
         <h1>WE BELIEVE CONSISTENCY IS KING</h1>

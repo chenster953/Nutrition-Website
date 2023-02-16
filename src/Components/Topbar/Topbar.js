@@ -6,7 +6,7 @@ const Topbar = () => {
   return (
     <div className="topbar">
       <div className="left">
-        <div className="logo"><button>ℂ𝔸𝕃𝕊-ℝ-𝕌𝕊</button></div>
+        <div className="logo"><button>ApexNutrition</button></div>
       </div>
       <div className="center">
         <nav>
